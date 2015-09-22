@@ -5,14 +5,22 @@ app:
   working_dir: /shared
   volumes:
     # app
-    - ./src:/shared/src:ro
+    - ./src:/shared/src
+    # :ro
     # nginx
     - ./environment/nginx/config:/shared/nginx/config:ro
     - ./environment/nginx/log:/shared/nginx/log
+
+nodejs:
+  build: ./environment/nodejs/
+  working_dir: /shared/src
+  volumes_from:
+    - app
 
 nginx:
   build: ./environment/nginx/
   ports:
     - "80:80"
+    - "8080:8080"
   volumes_from:
     - app

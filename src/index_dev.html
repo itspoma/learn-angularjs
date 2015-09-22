@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+  <head>
+    <base href="/" />
+    <title></title>
+  </head>
+  <body ng-controller="defaultCtrl">
+
+    <a href="/view1">view1</a>
+    <a href="/view2">view2</a>
+
+    <div>
+      11
+      <div ng-view></div>
+    </div>
+
+     *       <pre>$location.path() = {{$location.path()}}</pre>
+     *       <pre>$route.current.templateUrl = {{$route.current.templateUrl}}</pre>
+     *       <pre>$route.current.params = {{$route.current.params}}</pre>
+     *       <pre>$route.current.scope.name = {{$route.current.scope.name}}</pre>
+     *       <pre>$routeParams = {{$routeParams}}</pre>
+
+    <!--
+    <script type="text/ng-template" id="/view1.tpl">
+      template111
+    </script>
+    -->
+
+    <script type="text/ng-template" id="/view2.tpl">
+      template222
+    </script>
+
+
+    <div ng-bind="title"></div>
+    <div>{{title}}</div>
+    <div ng-bind="getTitle()"></div>
+    <input type="text" ng-model="title" />
+
+    <br/><br/>
+
+    <button name="Add" ng-click="increasePageSize()">inc</button>
+
+    <input type="text" ng-model="pageSize" />
+    <br/>
+
+    <ul>
+      <li ng-repeat="article in articles | limitTo:pageSize:1">
+        <p>{{article.title}}</p>
+      </li>
+    </ul>
+
+    <script data-env="development" src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.5.1/less.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/coffee-script/1.7.1/coffee-script.min.js"></script>
+
+    <script type="text/coffeescript" src="/app/app.coffee"></script>
+    <script type="text/coffeescript" src="/app/app.routes.coffee"></script>
+    <script type="text/coffeescript" src="/app/app.modules.coffee"></script>
+
+    <script src="https://code.angularjs.org/1.4.5/angular.js"></script>
+    <script src="https://code.angularjs.org/1.4.5/angular-route.js"></script>
+    <script src="https://code.angularjs.org/1.4.5/angular-mocks.js"></script>
+    <script src="https://code.angularjs.org/1.4.5/angular-resource.js"></script>
+    
+  </body>
+</html>
